@@ -1,8 +1,8 @@
 <?php
 $data = file_get_contents('php://input');
 
-$user = $jsondata->ucid;
-$pass = $jsondata->pass;
+//$user = $jsondata->ucid;
+//$pass = $jsondata->pass;
 
 $_GET["ucid"];
 $_GET["pass"];
