@@ -1,11 +1,10 @@
 <?php
 $data = file_get_contents('php://input');
 
-//$user = $jsondata->ucid;
-//$pass = $jsondata->pass;
+$ucid = $_GET["Username"];
+$pass = $_GET["Password"];
 
-$_GET["ucid"];
-$_GET["pass"];
+echo $_GET["Username"];
 
 $pass = crypt($pass);
 
@@ -15,11 +14,17 @@ if (!$connection){
 die("Connection failed: " . mysqli_connect_error());
 }
 
-$result = mysqli_query($connection,"select count(*) from Login where ucid = '$user' and password = '$password;");
+$result = mysqli_query($connection,"select count(*) from Login where ucid = '$user' and password = '$pass';");
 $data = mysqli_fetch_assoc($result);
-
-if 
-
+$output = $data['COUNT(*)'];
+if($output == 1)
+{
+echo "Login Successful";
+}
+else
+{
+echo "login failed";
+}
 //while($row = mysqli_fetch_assoc($result))
 //{
 //echo "ucid: " . $row["ucid"]. "  | password: " . $row["password"]. "<br>";
@@ -27,7 +32,6 @@ if
 
 mysqli_close($connection);
 
-$sa = "cocks";
 
 //$ch = curl_init();
 
@@ -44,4 +48,5 @@ $sa = "cocks";
 //echo $result;
 //curl_close($ch);
 
+echo "Hello";
 ?>
